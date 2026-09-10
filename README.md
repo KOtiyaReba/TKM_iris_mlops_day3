@@ -66,3 +66,19 @@ dvc repro
 # run 'dvc repro' again to see no change = no execution
 
 python src/ingest_batch.py data/incoming/iris_v2.csv
+
+
+# upgraded pipeline execution using dvc.yaml
+    subprocess.run(["dvc", "repro"], check=True)
+    print("Pipeline reproduction complete")
+
+# MLFlow
+pip install mlflow
+<!-- modify the train.py file to import hyper parameters and other data -->
+<!-- execute the yaml to test -->
+dvc repro
+<!-- observe MLflow storing experiment info as reports by executing -->
+mlflow server --port 5000
+http://127.0.0.1:5000  # UI
+<!-- understand MLflow UI -->
+<!-- update the yaml file with the metrics. -->    

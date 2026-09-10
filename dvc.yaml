@@ -17,3 +17,6 @@ stages:
     - src/train.py
     outs:
     - models/iris_random_forest.joblib
+    metrics:
+      - reports/metrics.json:
+          cache: false
