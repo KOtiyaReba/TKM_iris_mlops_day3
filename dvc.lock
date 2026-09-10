@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 796833006310fb16624e1492fe91ad76
+      size: 433
+    - path: src/config.py
+      hash: md5
+      md5: 1cb5b2de7270773d05f3308157495250
+      size: 402
+    - path: src/preprocess.py
+      hash: md5
+      md5: b9c4a91a9b89f058df935921186cbbb6
+      size: 774
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 8085cd9f1c7182010be2b04f366a7101
+      size: 161
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a7aad40e3936f130402a43890256b5ee
+      size: 369
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 8085cd9f1c7182010be2b04f366a7101
+      size: 161
+    - path: data/processed/train.csv
+      hash: md5
+      md5: a7aad40e3936f130402a43890256b5ee
+      size: 369
+    - path: src/config.py
+      hash: md5
+      md5: 1cb5b2de7270773d05f3308157495250
+      size: 402
+    - path: src/train.py
+      hash: md5
+      md5: 52da706f5498e629131266b76907cc2d
+      size: 798
+    outs:
+    - path: models/iris_random_forest.joblib
+      hash: md5
+      md5: 8e8f66ffb0002be3827ea06ad86a9b3d
+      size: 98353

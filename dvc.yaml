@@ -1,0 +1,19 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - data/raw/iris.csv
+    - src/config.py
+    - src/preprocess.py
+    outs:
+    - data/processed/test.csv
+    - data/processed/train.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/processed/test.csv
+    - data/processed/train.csv
+    - src/config.py
+    - src/train.py
+    outs:
+    - models/iris_random_forest.joblib

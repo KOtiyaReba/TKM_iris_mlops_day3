@@ -58,6 +58,7 @@ git rm --cached models/iris_random_forest.joblib
 
 # prepare yaml script
 dvc stage add -n preprocess -d data/raw/iris.csv -d src/preprocess.py -d src/config.py -o data/processed/train.csv -o data/processed/test.csv "python src/preprocess.py"
+
 dvc stage add -n train -d data/processed/train.csv -d data/processed/test.csv -d src/train.py -d src/config.py -o models/iris_random_forest.joblib "python src/train.py"
 # verify DVC creation
 # test DVC yaml 
